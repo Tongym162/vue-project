@@ -6,7 +6,6 @@ selenium-debug.log
 test/unit/coverage
 test/e2e/reports
 /bin
-/build
 .idea
 *.bak
 *.swp
