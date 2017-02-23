@@ -26,7 +26,7 @@ router.beforeEach(function () {
 })
 
 router.redirect({
-    '*' : '/hello'
+    '*' : '/menu'
 })
 
 router.start(App,'#app')

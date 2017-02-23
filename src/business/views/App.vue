@@ -14,31 +14,24 @@
 </script>
 
 <style>
-  @import "../../assets/css/cssreset.min.css";
   @import "../../assets/fonts/iconfont.css";
   html,body {
     height: 100%;
   }
-
-  /*body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }*/
+  body{
+    background-color: #fff;
+  }
   #app {
     color: #2c3e50;
     max-width: 600px;
     font-family: Source Sans Pro, Helvetica, sans-serif;
   }
-
-  #app a {
-    color: #42b983;
-    text-decoration: none;
+  ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
   }
-
-  .logo {
-    width: 100px;
-    height: 100px
+  div{
+    font-size: .14rem;
   }
 </style>
