@@ -1,20 +1,22 @@
 <template>
     <div>
       <!--自定义select组件-->
-      <input-select :data="data"
+      <input-select :data="selectData"
                     @event-custom-selected="selected"></input-select>
       <!--省市区选择器-->
+      <input-city :data="area" :valid-promise-array="validArray"></input-city>
     </div>
 </template>
 <style scoped>
 </style>
 <script>
     import InputSelect from 'vui/Form/InputSelect.vue'
+    import InputCity from 'vui/Form/InputCity/InputCity'
     export default{
         data(){
             return{
               //select数据
-              data: {
+              selectData: {
                 name: "客户等级",
                 required: true,
                 placeholder: "请选择",
@@ -38,6 +40,21 @@
                   }
                 ],
               },
+              //省市区数据
+              area: {
+                value: '',
+                placeholder: '请选择区域',
+                name: '省、市、区',
+                minlength: 0,
+                maxlength: 50,
+                id: 'area',
+                validFuncArray: [],//checkLength(0, 50)
+                disabled: true,
+                province: '',
+                city: '',
+                district: ''
+              },
+              validArray: [],
             }
         },
         methods:{
@@ -47,6 +64,7 @@
         },
         components:{
           InputSelect,
+          InputCity
         }
     }
 </script>

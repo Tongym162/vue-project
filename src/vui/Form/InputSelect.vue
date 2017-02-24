@@ -1,14 +1,17 @@
 <template>
     <div class="input-select">
-      <span class="item-required" v-show="data.required">*</span>
-      <span class="item-label" v-text="data.name">省市区</span><span>:</span>
+      <div class="item-label" v-if="data.name">
+        <span class="item-required" v-show="data.required">*</span>
+        <span class="item-label" v-text="data.name">省市区</span><span>:</span>
+      </div>
+
       <div class="item-value" :class="{'active':isShowPanel}"  @click="toggle">
         <span class="item-placeholder" v-if="isShowPlaceholder">请选择</span>
         <span class="item-name" v-else v-text="checkName"></span>
         <span class="iconfont icon-drop-down" v-show="!isShowPanel"></span>
         <span class="iconfont icon-drop-up" v-show="isShowPanel"></span>
       </div>
-      <div class="checkbox-panel" v-show="isShowPanel">
+      <div class="checkbox-panel" :class="{'panel-position': data.name}" v-show="isShowPanel">
         <ul>
           <li v-for="item in data.item" @click="chooseItem(item)">{{item.name}}</li>
         </ul>
@@ -99,14 +102,6 @@
   }
   .item-label{
     display: inline-block;
-    font-size: .16rem;
-    text-align: left;
-    width: 60px;
-    text-align: justify;
-    text-justify: distribute-all-lines;
-    text-align-last: justify;
-    -moz-text-align-last: justify;
-    -webkit-text-align-last: justify;
   }
   .item-value{
     display: inline-block;
@@ -137,8 +132,11 @@
     z-index: 100;
     border-radius: 2px;
     padding: 0 4px;
-    margin-left: 75px;
   }
+  .panel-position{
+    margin-left: 60px;
+  }
+
   .checkbox-panel ul li{
     height: 31px;
     line-height: 31px;
