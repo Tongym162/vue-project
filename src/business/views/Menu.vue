@@ -52,7 +52,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .menu-list-li{
-    line-height: .4rem;
+    line-height: .6rem;
   }
   .menu-list-a{
     font-size: .32rem;
