@@ -1,7 +1,7 @@
 <template>
     <div class="input-select">
       <span class="item-required" v-show="data.required">*</span>
-      <span class="item-label" v-text="data.name">省市区</span><span>&nbsp;</span>
+      <span class="item-label" v-text="data.name">省市区</span><span>:</span>
       <div class="item-value" :class="{'active':isShowPanel}"  @click="toggle">
         <span class="item-placeholder" v-if="isShowPlaceholder">请选择</span>
         <span class="item-name" v-else v-text="checkName"></span>

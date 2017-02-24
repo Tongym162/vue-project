@@ -1,16 +1,19 @@
 <template>
     <div>
+      <!--自定义select组件-->
       <input-select :data="data"
                     @event-custom-selected="selected"></input-select>
+      <!--省市区选择器-->
     </div>
 </template>
 <style scoped>
 </style>
 <script>
-    import InputSelect from './../../vui/Form/InputSelect.vue'
+    import InputSelect from 'vui/Form/InputSelect.vue'
     export default{
         data(){
             return{
+              //select数据
               data: {
                 name: "客户等级",
                 required: true,
