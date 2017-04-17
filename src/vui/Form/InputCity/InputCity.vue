@@ -19,6 +19,9 @@ export default {
   methods:{
 
   },
+  components: {
+    InputSelect
+  }
 
 }
 </script>
