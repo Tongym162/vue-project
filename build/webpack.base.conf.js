@@ -3,6 +3,10 @@ var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+// 引入extract-text-webpack-plugin插件
+// 该插件能从文件中提取文本到新的文档
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -15,7 +19,17 @@ module.exports = {
     filename: '[name].js'
   },
   plugins: [
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+    new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+    new CopyWebpackPlugin([
+      {
+        // path.resolve拼接静态资源绝对路径
+        from: path.resolve(__dirname, './../src/assets'),
+        to: config.build.assetsSubDirectory,
+        ignore: ['.*']
+      }
+    ]),
+    // 将css文件分离出来
+    // new ExtractTextPlugin('static/css/[name]-[chunkhash:6].css'),
   ],
   resolve: {
     //后缀名的自动补全
@@ -62,11 +76,13 @@ module.exports = {
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
+        loader: 'url-loader?name=static/fonts/[name].[md5:hasg:hex:7].[ext]'  //字体文件最后会以字符的形式保存在css文件中
+        /*loader: 'file?name=static/fonts/[name].[ext]?[hash:6]'*/
+        /*loader: 'url',
+         query: {
+         limit: 10000,
+         name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+         }*/
       },
       {
         test: /\.less$/,
@@ -75,6 +91,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader:  'style!css'
+        // loader: ExtractTextPlugin.extract('style-loader', 'style!css!less')
       },
     ]
   },
