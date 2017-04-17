@@ -7,7 +7,11 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    /**
+     * 服务端顶级目录是dist，所以 assetsPublicPath: '/'
+     * 本地环境顶级目录是vue-project，所以assetsPublicPath: '/vue-project/dist'
+      */
+    assetsPublicPath: '/vue-project/dist',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
